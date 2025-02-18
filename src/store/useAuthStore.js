@@ -2,11 +2,8 @@ import { create } from "zustand";
 import { axiosInstance } from "../lib/axios.js";
 import toast from "react-hot-toast";
 import { io } from "socket.io-client";
-
-const BASE_URL =
-  import.meta.env.MODE === "development"
-    ? "https://test-repo-production-5712.up.railway.app/"
-    : "/";
+import { BACKEND_URL } from "../backendurl.js";
+const BASE_URL = BACKEND_URL;
 
 export const useAuthStore = create((set, get) => ({
   authUser: null,
@@ -51,10 +48,11 @@ export const useAuthStore = create((set, get) => ({
       const res = await axiosInstance.post("/auth/login", data);
       set({ authUser: res.data });
       toast.success("Logged in successfully");
+      console.log("Login Response:", res); // Debugging
 
       get().connectSocket();
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error?.response?.data?.message || "Login failed");
     } finally {
       set({ isLoggingIn: false });
     }

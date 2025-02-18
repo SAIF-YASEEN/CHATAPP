@@ -1,9 +1,6 @@
 import axios from "axios";
-
+import { BACKEND_URL } from "../backendurl.js";
 export const axiosInstance = axios.create({
-  baseURL:
-    import.meta.env.MODE === "development"
-      ? "https://test-repo-production-5712.up.railway.app/api"
-      : "/api",
-  withCredentials: true,
+  baseURL: `${BACKEND_URL}/api`,
+  withCredentials: true, // Ensures cookies are sent
 });

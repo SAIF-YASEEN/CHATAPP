@@ -2,6 +2,7 @@ import { create } from "zustand";
 import toast from "react-hot-toast";
 import { axiosInstance } from "../lib/axios";
 import { useAuthStore } from "./useAuthStore";
+import { BACKEND_URL } from "../backendurl.js";
 
 export const useChatStore = create((set, get) => ({
   messages: [],
@@ -89,7 +90,7 @@ export const useChatStore = create((set, get) => ({
 
     try {
       const response = await axiosInstance.delete(
-        `https://test-repo-production-5712.up.railway.app//api/messages/${messageId}`,
+        `${BACKEND_URL}/api/messages/${messageId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
