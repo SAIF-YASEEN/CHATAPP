@@ -89,7 +89,7 @@ export const useChatStore = create((set, get) => ({
 
     try {
       const response = await axiosInstance.delete(
-        `http://localhost:5001/api/messages/${messageId}`,
+        `https://test-repo-production-5712.up.railway.app//api/messages/${messageId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
