@@ -16,7 +16,7 @@ export const useAuthStore = create((set, get) => ({
   checkAuth: async () => {
     try {
       const res = await axiosInstance.get("/auth/check", {
-        withCredentials: true, // Ensure cookies are sent
+        withCredentials: true, // Allow cookies to be sent
       });
 
       set({ authUser: res.data });

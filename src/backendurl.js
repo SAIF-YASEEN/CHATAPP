@@ -1,4 +1,3 @@
-export const BACKEND_URL = "http://localhost:8000";
+export const BACKEND_URL = "https://chatapp-backend-production-af65.up.railway.app";
 //
-// "https://test-repo-production-5712.up.railway.app/";?
-// ";
+//https://chatapp-backend-production-af65.up.railway.app/// ";
