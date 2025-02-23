@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 import AuthImagePattern from "../components/AuthImagePattern";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare } from "lucide-react";
 
 const LoginPage = () => {
@@ -11,7 +11,8 @@ const LoginPage = () => {
     password: "",
   });
   const { login, isLoggingIn } = useAuthStore();
-  
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = await login(formData); // login function now returns the token
@@ -89,6 +90,16 @@ const LoginPage = () => {
                   ) : (
                     <Eye className="h-5 w-5 text-base-content/40" />
                   )}
+                </button>
+              </div>
+              {/* Forgot Password Button */}
+              <div className="text-right mt-2">
+                <button
+                  type="button"
+                  className="text-primary text-sm hover:underline"
+                  onClick={() => navigate("/forgot-password")}
+                >
+                  Forgot Password?
                 </button>
               </div>
             </div>
